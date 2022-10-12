@@ -15,8 +15,10 @@ public:
         int ans=0 ;
         if(a>=(b+c))
             ans=0;
-        else
+        else{
             ans=a+b+c;
+            return ans;
+        }
             
         while(!pq.empty()){
             a = b;
@@ -28,7 +30,7 @@ public:
                 pq.pop();
                 if(a<(b+c)){
                     int curperim = a+b+c;
-                    ans = max(ans,curperim);
+                     return curperim;
                 }
             }
         }
