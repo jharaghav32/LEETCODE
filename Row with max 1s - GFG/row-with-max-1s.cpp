@@ -7,21 +7,23 @@ using namespace std;
 class Solution{
 public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
-	    int maxi=INT_MIN;
+	    int i=0;
+	    int j = m-1;
 	    int cnt=0;
-	    int ans;
-	    for(int i=0;i<n;i++){
-	        cnt=0;
-	        for(int j=0;j<m;j++){
-	            if(arr[i][j]==1)
+	    int idx=-1;
+	    // time complexity is O(n+m)
+	    while(i<n && j>=0){
+	        if(arr[i][j]==1)
+	        {
 	            cnt++;
+	            j--;
+	            idx=i;
 	        }
-	        if(maxi<cnt){
-	            maxi=cnt;
-	            ans=i;
+	        else{
+	            i++;
 	        }
 	    }
-	    return maxi==0?-1:ans;
+	    return idx;
 	}
 
 };
