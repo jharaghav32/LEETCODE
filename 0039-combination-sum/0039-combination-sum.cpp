@@ -9,8 +9,9 @@ public:
         if(idx>=candidates.size() || sum<0 )
             return;
         combination(candidates,sum,level,idx+1);
-        level.push_back(candidates[idx]);
+        level.push_back(candidates[idx]);// include the element to take that element 
         combination(candidates,sum-candidates[idx],level,idx);
+        level.pop_back();
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<int>level;
