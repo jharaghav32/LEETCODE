@@ -1,1 +1,1 @@
-​
+Same general approach as backtracking for every element we have to check whether we take that element or  not if we take that one than include it in vector and don't increase the idx because we can use single element multiple times so if we have taken that element may be we will tke it again so don't increment idx and if we don't take it increment the idx whenever the sum equals to target include the vector in ans and return ;
