@@ -9,14 +9,26 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-       
-        ListNode*ptr = head;
-        unordered_map<ListNode*,int>ump;
-        while(ptr){
-            if(ump.find(ptr)!=ump.end())return ptr;
-            ump[ptr]++;
-            ptr=ptr->next;
+       if(!head || !head->next){
+           // cout<<"checking1"<<" ";
+           return NULL;
+       }
+        ListNode*slow = head->next;
+        ListNode*fast=head->next->next;
+        
+        while(slow!=fast && fast && fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
         }
-        return NULL;
+       if(slow!=fast){
+           // cout<<"checking"<<" ";
+           return NULL;
+       }
+        slow=head;
+        while(slow!=fast){
+            slow=slow->next;
+            fast=fast->next;
+        }
+        return slow;
     }
 };
