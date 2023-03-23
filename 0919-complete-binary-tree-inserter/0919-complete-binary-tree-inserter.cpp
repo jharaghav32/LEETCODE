@@ -38,7 +38,10 @@ public:
             else if(!node->left || !node->right){
                 TreeNode* newnode= new TreeNode(val);
                 if(!node->left)node->left=newnode;
-                else node->right = newnode;
+                else {
+                    node->right = newnode;
+                    idx++;
+                }
                 v.push_back(newnode);
                 return node->val;
             }
