@@ -26,10 +26,6 @@ public:
                 comp++;
             }
         }
-        int redundant = edges - ((n-1)-(comp-1));
-        if(redundant>=(comp-1))
-            return comp-1;
-        else
-            return -1;
+        return comp-1;
     }
 };
