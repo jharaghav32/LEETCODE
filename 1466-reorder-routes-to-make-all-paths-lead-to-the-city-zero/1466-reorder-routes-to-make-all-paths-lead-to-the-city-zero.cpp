@@ -22,11 +22,9 @@ public:
             adj[connections[i][0]].push_back(connections[i][1]);
              adj[connections[i][1]].push_back(connections[i][0]);
         }
-        for(int i=0;i<n;i++){
-            if(!vis[i]){
-                 dfs(i,adj,vis);
-            }
-        }
+        
+                 dfs(0,adj,vis);
+        
        
         return cnt;
         
