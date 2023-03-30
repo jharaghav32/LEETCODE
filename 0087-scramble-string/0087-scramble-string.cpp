@@ -8,6 +8,14 @@ public:
         if(s1.length()<=1 || s2.length()<=1)
             return mp[s]= false;
         if(mp.find(s)!= mp.end()) return mp[s];
+        vector<int>frq1(26,0);
+                vector<int>frq2(26,0);
+        for(int i=0;i<s1.size();i++){
+            frq1[s1[i]-'a']++;
+            frq2[s2[i]-'a']++;
+        }
+        if(frq1!=frq2)return mp[s]=false;
+
         bool flag = false;
         int n = s1.length();
         for(int i=1;i<n;i++){
