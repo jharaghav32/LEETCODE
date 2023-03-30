@@ -8,6 +8,8 @@ public:
         if(s1.length()<=1 || s2.length()<=1)
             return mp[s]= false;
         if(mp.find(s)!= mp.end()) return mp[s];
+        // checking if frequency of both string is not same then it is not pssble to 
+        // make  a scrambled string and avoid necessary calls of recursion by checking frequency
         vector<int>frq1(26,0);
                 vector<int>frq2(26,0);
         for(int i=0;i<s1.size();i++){
@@ -36,4 +38,5 @@ public:
             return true;
         return solve(s1,s2);
     }
+    // time complexity is same as mcm --->O(N3)
 };
