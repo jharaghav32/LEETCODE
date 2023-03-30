@@ -4,9 +4,9 @@ public:
     bool solve(string s1,string s2){
         string s = s1+" "+s2;
         if(s1 == s2)
-            return true;
+            return mp[s]= true;
         if(s1.length()<=1 || s2.length()<=1)
-            return false;
+            return mp[s]= false;
         if(mp.find(s)!= mp.end()) return mp[s];
         bool flag = false;
         int n = s1.length();
