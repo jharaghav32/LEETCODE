@@ -4,7 +4,6 @@ public:
         long long n = spells.size();
         long long m = potions.size();
         sort(potions.begin(),potions.end());
-        vector<int>ans;
         for(int i=0;i<n;i++){
             int l=0;
             int h = m-1;
@@ -20,8 +19,8 @@ public:
                 
             }
             
-          ans.push_back(m-l);
+          spells[i]=m-l;
         }
-        return ans;
+        return spells;
     }
 };
