@@ -13,11 +13,14 @@ public:
             if(people[left]+people[right]<=limit){
                 left++;
                 right--;
+                ans++;
             }
             // if it exceeds the limit then that means we can't take both element we have to take only one element so take the element having max value and increment the answer  because we require min boat so take that one and decrement the right pointer as we now can't take that element again 
             else
-                right--;
+            {        
+            right--;
             ans++;
+            }
         }
         return ans;
        
