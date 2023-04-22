@@ -11,7 +11,7 @@ public:
     }
     int minInsertions(string s) {
         int n = s.size();
-        vector<vector<int>>dp(501,vector<int>(501,-1));
+        vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
         string a = s;
          reverse(s.begin(),s.end());
 
