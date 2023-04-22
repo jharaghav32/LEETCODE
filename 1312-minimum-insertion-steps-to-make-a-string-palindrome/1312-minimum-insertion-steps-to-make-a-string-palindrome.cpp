@@ -1,23 +1,20 @@
-
-    class Solution {
+class Solution {
 public:
-    int t[501][501];
-    int lcs(string &a,string &b,int m,int n){
-        if(m==0 || n==0)
-            return t[m][n]=0;
-        if(t[m][n]!= -1) return t[m][n];
-        if(a[m-1]==b[n-1])
-            return t[m][n]=lcs(a,b,m-1,n-1)+1;
+    int lcs(string &a,string &b,int n,int m,vector<vector<int>>&dp ){
+        if(n==0 || m==0)return dp[n][m]=0;
+        if(dp[n][m]!=-1)return dp[n][m];
+        if(a[n-1]==b[m-1]){
+            return dp[n][m]=lcs(a,b,n-1,m-1,dp)+1;
+        }
         else
-            return t[m][n]=max(lcs(a,b,m,n-1),lcs(a,b,m-1,n));
+            return dp[n][m]=max(lcs(a,b,n,m-1,dp),lcs(a,b,n-1,m,dp));
     }
     int minInsertions(string s) {
-        memset(t,-1,sizeof(t));
-        int m = s.length();
-        string rev;
-        for(int i=m-1;i>=0;i--)
-            rev.push_back(s[i]);
-        return m-lcs(s,rev,m,m);
+        int n = s.size();
+        vector<vector<int>>dp(501,vector<int>(501,-1));
+        string a = s;
+         reverse(s.begin(),s.end());
+
+        return n-lcs(a,s,n,n,dp);
     }
 };
-  
