@@ -1,22 +1,31 @@
 class SmallestInfiniteSet {
 public:
-    vector<int>vis;
+    set<int>st;
+    int curr;
     SmallestInfiniteSet() {
-        vis.resize(1005,1);
+     curr=1;
     }
     
     int popSmallest() {
-        for(int i=1;i<1005;i++){
-            if(vis[i]){
-                vis[i]=0;
-                return i;
-            }
-        }
-        return 1005;
+       if(st.size()){
+           int firselem = *st.begin();
+           if(firselem<curr){
+               st.erase(st.begin());
+               return firselem;
+           }
+           else{
+               curr = curr+1;
+               return curr-1;
+           }
+       }
+        curr = curr+1;
+        return curr-1;
     }
     
     void addBack(int num) {
-        vis[num]=1;
+        if(curr>num){
+            st.insert(num);
+        }
     }
 };
 
