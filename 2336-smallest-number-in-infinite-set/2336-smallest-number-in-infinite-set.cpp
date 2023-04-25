@@ -9,14 +9,8 @@ public:
     int popSmallest() {
        if(st.size()){
            int firselem = *st.begin();
-           if(firselem<curr){
                st.erase(st.begin());
                return firselem;
-           }
-           else{
-               curr = curr+1;
-               return curr-1;
-           }
        }
         curr = curr+1;
         return curr-1;
