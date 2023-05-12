@@ -1,16 +1,13 @@
 class Solution {
 public:
-      long long points(vector<vector<int>>&questions,int idx,int n,vector<long long>&dp){
-           if(idx>=n)return 0;
-          if(dp[idx]!=-1)return dp[idx];
-           long long a = points(questions,idx+1+questions[idx][1],n,dp)+questions[idx][0];
-           long long b = points(questions,idx+1,n,dp);
-          return dp[idx]=max(a,b);
-       }
+     
     long long mostPoints(vector<vector<int>>& questions) {
       
         int n  = questions.size();
-          vector<long long>dp(n,-1);
-        return points(questions,0,n,dp);
+          vector<long long>dp(200001,0);// here we create a size of 2 * 1e5 because the max index we may reach is this so to avoid rte we do this and initialise it to zero
+        for(int i=n-1;i>=0;i--){
+         dp[i]=max(dp[i+1+questions[i][1]]+questions[i][0],dp[i+1]);
+        }
+        return dp[0];
     }
 };
