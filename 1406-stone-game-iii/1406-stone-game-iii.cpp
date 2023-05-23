@@ -1,24 +1,18 @@
 class Solution {
 public:
-    int stone(vector<int>&s,int idx,int n,vector<int>&dp){
-        if(idx>=n)return 0;
-        int ans = INT_MIN;
-        if(dp[idx]!=-1)return dp[idx];
-        ans = max(ans,s[idx]-stone(s,idx+1,n,dp));
-        if(idx+1<n)
-            ans = max(ans,s[idx]+s[idx+1]-stone(s,idx+2,n,dp));
-        if(idx+2<n)
-            ans = max(ans,s[idx]+s[idx+1]+s[idx+2]-stone(s,idx+3,n,dp));
-        
-        return dp[idx]= ans;
-        
-    }
     string stoneGameIII(vector<int>& stoneValue) {
         int n = stoneValue.size();
-        vector<int>dp(n+1,-1);
-        int ans = stone(stoneValue,0,stoneValue.size(),dp);
-        if(ans>0)return "Alice";
-        else if(ans<0)return "Bob";
+        vector<int>dp(n+1,INT_MIN);
+        dp[n]=0;
+        for(int i=n-1;i>=0;i--){
+            dp[i]=max(dp[i],stoneValue[i]-dp[i+1]);
+            if(i+1<n)
+                dp[i]=max(dp[i],stoneValue[i]+stoneValue[i+1]-dp[i+2]);
+            if(i+2<n)
+                dp[i]=max(dp[i],stoneValue[i]+stoneValue[i+1]+stoneValue[i+2]-dp[i+3]);
+        }
+        if(dp[0]>0)return "Alice";
+        else if(dp[0]<0)return "Bob";
         return "Tie";
     }
 };
