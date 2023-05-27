@@ -12,7 +12,6 @@ public:
                 ans=max(ans,stoneValue[i]+stoneValue[i+1]-i2);
             if(i+2<n)
                 ans=max(ans,stoneValue[i]+stoneValue[i+1]+stoneValue[i+2]-i3);
-              
              i3=i2;
              i2=i1;
              i1 = ans;
