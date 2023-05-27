@@ -6,6 +6,7 @@ public:
         int ans = INT_MIN;
         int tpick=0;
         for(int i=1;i<=2*m;i++){
+            //if index is within the range add the number and call if index is out of bound it retrun 0
             if(idx+i-1<n)tpick+= s[idx+i-1];
             ans = max(ans,tpick-stone(s,idx+i,n,max(m,i),dp));
         }
