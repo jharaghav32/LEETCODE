@@ -1,7 +1,7 @@
 class UndergroundSystem {
 public:
     map<int,pair<string,int>>mp;
-    map<string,vector<int>>ump;
+    map<string,pair<int,int>>ump;
     UndergroundSystem() {
         
     }
@@ -13,17 +13,13 @@ public:
     void checkOut(int id, string stationName, int t) {
         string newstring = mp[id].first+" "+stationName;
         int timetaken = t -mp[id].second;
-        ump[newstring].push_back(timetaken);
+        ump[newstring].first += timetaken;
+        ump[newstring].second += 1;
     }
     
     double getAverageTime(string startStation, string endStation) {
         string newstring = startStation+" "+endStation;
-        int n = ump[newstring].size();
-        int sum=0;
-        for(auto it :ump[newstring]){
-            sum += it;
-        }
-        double result = (double)sum/n;
+        double result = (double)ump[newstring].first/ump[newstring].second;
         return result;
     }
     
