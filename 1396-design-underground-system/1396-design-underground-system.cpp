@@ -1,6 +1,6 @@
 class UndergroundSystem {
 public:
-    map<int,pair<string,int>>mp;
+    unordered_map<int,pair<string,int>>mp;
     map<string,pair<int,int>>ump;
     UndergroundSystem() {
         
